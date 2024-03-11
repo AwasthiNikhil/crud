@@ -68,10 +68,13 @@ class FileController extends Controller
 
         // Save the file details to the database
         $fileModel = new File();
+
+
         $fileModel->user_id = $userId;
         $fileModel->filename = $fileName;
         $fileModel->path = $filePath;
         $fileModel->save();
+
 
 
         return redirect()->route('files.index');
