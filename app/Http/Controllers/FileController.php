@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Response;
 use App\Models\File;
+use Illuminate\View\View;
 use Illuminate\Http\Request;
 
 class FileController extends Controller
@@ -10,9 +12,9 @@ class FileController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): View
     {
-        //
+        return view('files.index');
     }
 
     /**
