@@ -28,10 +28,7 @@ class FileController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
-    {
-        //
-    }
+
     public function download(File $file)
     {
         // Retrieve the file path from the database
@@ -109,6 +106,13 @@ class FileController extends Controller
      */
     public function destroy(File $file)
     {
-        //
+
+        Storage::delete($file->path);
+
+        // Delete the file record from the database
+        $file->delete();
+
+        // Redirect back with a success message
+        return redirect()->back()->with('success', 'File deleted successfully.');
     }
 }

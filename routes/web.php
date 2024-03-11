@@ -24,7 +24,7 @@ Route::get('/dashboard', function () {
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::resource('files', FileController::class)
-    ->only(['index', 'store'])
+    ->only(['index', 'store','destroy'])
     ->middleware(['auth', 'verified']);
 
 Route::post('/files/{file}/download', 'App\Http\Controllers\FileController@download')->name('files.download')->middleware(['auth', 'verified']);
