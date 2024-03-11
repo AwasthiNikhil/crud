@@ -27,6 +27,7 @@ Route::resource('files', FileController::class)
     ->only(['index', 'store'])
     ->middleware(['auth', 'verified']);
 
+Route::post('/files/{file}/download', 'App\Http\Controllers\FileController@download')->name('files.download')->middleware(['auth', 'verified']);
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
@@ -34,4 +35,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
